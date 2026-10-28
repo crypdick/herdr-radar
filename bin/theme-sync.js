@@ -25,10 +25,10 @@ const { reloadConfig } = require('../lib/herdr');
 // `follow_appearance = false` turns the automatic path off; `--force` is an
 // explicit request and still goes through.
 function sync({ force = false } = {}) {
-  if (!config.followAppearance && !force) return { changed: false, variant: null, off: true };
+  if ((!config.autoConfig || !config.followAppearance) && !force) return { changed: false, variant: null, off: true };
   const variant = force ? appearance.current(Date.now(), { fresh: true }) : appearance.takeChange();
   if (!variant) return { changed: false, variant: appearance.current() };
-  const result = managed.applyAppearance(variant);
+  const result = managed.applyAppearance(variant, { automatic: !force });
   if (result.ok && result.changed) reloadConfig();
   return { ...result, variant };
 }
@@ -41,7 +41,7 @@ if (require.main === module) {
     const result = sync({ force: mode === '--force' });
     console.log(
       result.off
-        ? 'follow_appearance = false; nothing to do (use --force to apply once)'
+        ? 'automatic config or appearance sync disabled; nothing to do (use --force to apply once)'
         : result.changed
           ? `theme block -> ${result.variant}`
           : `unchanged (${result.variant ?? 'unknown'})`,
