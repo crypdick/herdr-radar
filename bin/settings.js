@@ -55,6 +55,12 @@ function orderValue() {
 // popup never disagree about what the current state is.
 const FIELDS = [
   {
+    key: 'auto_config',
+    kind: 'bool',
+    fallback: true,
+    help: 'Automatically install/repair Herdr config and sync its theme. Disable when managing config in dotfiles; explicit configure and panel changes still write.',
+  },
+  {
     key: 'agents_panel',
     kind: 'enum',
     options: ['plugin', 'herdr'],

@@ -302,6 +302,13 @@ Both this file and Herdr's `config.toml` can be symlinks into a dotfiles reposit
 popup and `configure` write through the link to its target, so the link stays in place. (A
 link whose target is missing is written over, as a plain file.)
 
+For a config maintained by a dotfiles manager, set `auto_config = false` in Radar's
+plugin config and restart its daemon. Startup installation/repairs and automatic
+appearance sync then leave Herdr's config untouched, including the managed blocks.
+Keep those blocks in your dotfiles and update them there when needed. Runtime agent
+metadata, ordering and the tab-bar cache continue to update. Explicit `configure`,
+panel toggles and `theme-sync.js --force` still write through the symlink.
+
 ## Troubleshooting
 
 Start with `herdr plugin log list --plugin hhdebb.herdr-radar --limit 20`: every plugin command
