@@ -138,7 +138,7 @@ covered under Troubleshooting at https://github.com/hhdebb/herdr-radar
 ## What the sidebar looks like
 
 A pane reporting `account_profile=P` or `account_profile=W` gets that letter
-appended directly to its sidebar logo, with no separator. Other values are ignored.
+appended to its sidebar logo with a thin space for glyph clearance and no field separator. Other values are ignored.
 
 ```
 dashboard

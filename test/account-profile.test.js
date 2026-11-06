@@ -19,7 +19,7 @@ test('profile metadata travels into the same logo token in every state', async (
       const [entry] = await state.snapshot();
       for (const display of state.STATES) {
         const line = state.composeLine(entry, display, '', '', 0);
-        assert.equal(line.logo, logoFor(name) + (['P', 'W'].includes(profile) ? profile : ''));
+        assert.equal(line.logo, logoFor(name) + (['P', 'W'].includes(profile) ? '\u2009' + profile : ''));
       }
     }
   }
