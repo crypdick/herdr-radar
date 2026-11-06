@@ -137,6 +137,9 @@ covered under Troubleshooting at https://github.com/hhdebb/herdr-radar
 
 ## What the sidebar looks like
 
+A pane reporting `account_profile=P` or `account_profile=W` gets that letter
+appended directly to its sidebar logo, with no separator. Other values are ignored.
+
 ```
 dashboard
   ⣟ ✳ Implement OAuth scopes            ← working: braille spinner, title in the vendor's colour
